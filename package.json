@@ -1,6 +1,6 @@
 {
-  "name": "foo",
-  "version": "1.0.0",
+  "name": "multiple-svgs",
+  "version": "1.0.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development --port 8080"
@@ -28,5 +28,20 @@
   "dependencies": {
     "html2json": "^1.0.2",
     "js-beautify": "^1.14.3"
-  }
+  },
+  "description": "Convert multiple SVG's (as strings with co-ordinates) into one SVG. Making use of `<symbol>` and `<use>`",
+  "main": "src/index.mjs",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwilliams/multiple-svgs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwilliams/multiple-svgs/issues"
+  },
+  "homepage": "https://github.com/edwilliams/multiple-svgs#readme"
 }

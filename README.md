@@ -1,6 +1,6 @@
 # Multiple SVGs
 
-[![npm](https://img.shields.io/npm/v/foo.svg)](https://www.npmjs.com/package/foo)
+[![npm](https://img.shields.io/npm/v/multiple-svgs.svg)](https://www.npmjs.com/package/multiple-svgs)
 
 Convert multiple SVG's (as strings with co-ordinates) into one SVG. Making use of `<symbol>` and `<use>`
 
