@@ -74,6 +74,7 @@ multiSVGS({
 multiSVGS({
   type: 'layout',
   backgroundColor: 'pink',
+  padding: 20,
   svgWidth: 200,
   svgHeight: 100,
   rows: [

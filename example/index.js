@@ -33,7 +33,6 @@ const HTML_coords = multiSVGS({
 
 // NB all SVG must be same width / height
 const HTML_layout = multiSVGS({
-  padding: 10,
   type: 'layout',
   backgroundColor: 'pink',
   padding: 20,
