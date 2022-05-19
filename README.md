@@ -63,9 +63,9 @@ multiSVGS({
   <symbol width="200" height="200" id="item_2">
     <rect width="200" height="200" style="fill: green;"></rect>
   </symbol>
-  <use href="#item_0" x="0" y="0"></use>
-  <use href="#item_1" x="0" y="300"></use>
-  <use href="#item_2" x="0" y="550"></use>
+  <use href="#item_foo_0" x="0" y="0"></use>
+  <use href="#item_foo_1" x="0" y="300"></use>
+  <use href="#item_foo_2" x="0" y="550"></use>
 </svg>
 ```
 
@@ -158,14 +158,14 @@ multiSVGS({
   <symbol width="200" height="100" id="item_one_7">
     <rect x="0" y="0" width="200" height="100" style="fill: yellow;"></rect>
   </symbol>
-  <use href="#item_one_0" x="0" y="0"></use>
-  <use href="#item_one_1" x="0" y="100"></use>
-  <use href="#item_one_2" x="200" y="100"></use>
-  <use href="#item_one_3" x="400" y="100"></use>
-  <use href="#item_one_4" x="0" y="200"></use>
-  <use href="#item_one_5" x="200" y="200"></use>
-  <use href="#item_one_6" x="400" y="200"></use>
-  <use href="#item_one_7" x="600" y="200"></use>
+  <use href="#item_bar_0" x="0" y="0"></use>
+  <use href="#item_bar_1" x="0" y="100"></use>
+  <use href="#item_bar_2" x="200" y="100"></use>
+  <use href="#item_bar_3" x="400" y="100"></use>
+  <use href="#item_bar_4" x="0" y="200"></use>
+  <use href="#item_bar_5" x="200" y="200"></use>
+  <use href="#item_bar_6" x="400" y="200"></use>
+  <use href="#item_bar_7" x="600" y="200"></use>
 </svg>
 ```
 

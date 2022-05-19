@@ -1,8 +1,40 @@
 import multiSVGS from '../src/index.mjs'
 
+const HTML_coords = multiSVGS({
+  name: 'foo',
+  type: 'coords',
+  backgroundColor: 'pink',
+  width: 220,
+  height: 640,
+  svgs: [
+    {
+      x: 10,
+      y: 10,
+      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="200" height="100" style="fill: red;" />
+              <rect x="0" y="100" width="200" height="100" style="fill: orange;" />
+            </svg>`,
+    },
+    {
+      x: 10,
+      y: 220,
+      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" style="fill: yellow;" />
+            </svg>`,
+    },
+    {
+      x: 10,
+      y: 430,
+      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" style="fill: green;" />
+            </svg>`,
+    },
+  ],
+})
+
 // NB all SVG must be same width / height
 const HTML_layout = multiSVGS({
-  name: 'one',
+  name: 'bar',
   type: 'layout',
   backgroundColor: 'pink',
   padding: 10,
@@ -56,38 +88,6 @@ const HTML_layout = multiSVGS({
               </svg>`,
       },
     ],
-  ],
-})
-
-const HTML_coords = multiSVGS({
-  name: 'two',
-  type: 'coords',
-  backgroundColor: 'pink',
-  width: 220,
-  height: 640,
-  svgs: [
-    {
-      x: 10,
-      y: 10,
-      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="0" width="200" height="100" style="fill: red;" />
-              <rect x="0" y="100" width="200" height="100" style="fill: orange;" />
-            </svg>`,
-    },
-    {
-      x: 10,
-      y: 220,
-      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" style="fill: yellow;" />
-            </svg>`,
-    },
-    {
-      x: 10,
-      y: 430,
-      str: `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" style="fill: green;" />
-            </svg>`,
-    },
   ],
 })
 
