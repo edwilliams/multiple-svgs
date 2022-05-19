@@ -172,3 +172,4 @@ multiSVGS({
 
 - _bug_: errant (invisible) commas rendered out inside SVG elements
 - _techdebt_: convert to TS
+- _feature_: allow different widths / heights
