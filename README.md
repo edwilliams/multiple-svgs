@@ -7,7 +7,7 @@ Convert multiple SVG's (as strings with co-ordinates) into one SVG. Making use o
 ## Install
 
 ```
-$ npm install multi-svgs
+$ npm install multiple-svgs
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ $ npm install multi-svgs
 ```javascript
 // input - coords
 
-multiSVGS({
+multipleSvgs({
   type: 'coords',
   backgroundColor: 'pink',
   width: 220,
@@ -71,7 +71,7 @@ multiSVGS({
 ```javascript
 // input - layout
 
-multiSVGS({
+multipleSvgs({
   type: 'layout',
   backgroundColor: 'pink',
   padding: 20,

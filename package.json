@@ -1,6 +1,6 @@
 {
   "name": "multiple-svgs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "rollup -c",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development --port 8080"

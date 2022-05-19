@@ -5,7 +5,7 @@ import {
   deriveUseFromSvg,
 } from './utils.mjs'
 
-const multiSVGSCoords = ({ backgroundColor, height, width, svgs }) => {
+const typeCoords = ({ backgroundColor, height, width, svgs }) => {
   const name = getRandomNum()
 
   const symbols = svgs.map((svg, index) => {
@@ -24,7 +24,7 @@ const multiSVGSCoords = ({ backgroundColor, height, width, svgs }) => {
 }
 
 // todo: align: left/center/right
-const multiSVGSLayout = ({
+const typeLayout = ({
   backgroundColor,
   rows,
   svgWidth,
@@ -73,7 +73,7 @@ const multiSVGSLayout = ({
           </svg>`
 }
 
-const multiSVGS = ({
+const multipleSvgs = ({
   padding,
   rows,
   type,
@@ -86,9 +86,9 @@ const multiSVGS = ({
   svgHeight,
 }) => {
   return type === 'coords'
-    ? multiSVGSCoords({ backgroundColor, height, width, svgs })
+    ? typeCoords({ backgroundColor, height, width, svgs })
     : type === 'layout'
-    ? multiSVGSLayout({
+    ? typeLayout({
         backgroundColor,
         padding,
         rows,
@@ -99,4 +99,4 @@ const multiSVGS = ({
     : ''
 }
 
-export default multiSVGS
+export default multipleSvgs
