@@ -5,6 +5,8 @@ const _HTML2JSON = ({ html }) => _html2json.html2json(beautify.html(html))
 
 const _JSON2HTML = ({ json }) => beautify.html(_html2json.json2html(json))
 
+export const getRandomNum = () => Math.floor(Math.random() * 100000)
+
 export const convertSvgToSymbol = ({ name, index, html }) => {
   const json = _HTML2JSON({ html })
   const _json = json.child[0]
@@ -28,8 +30,6 @@ export const getUseFromSvg = ({ name, index, x, y }) => {
   return `<use href="#item_${name}_${index}" x=${x} y=${y} />`
 }
 
-// length of all previous rows
-// techdebt: limited to 3 rows
 const _getItemIndex = ({ index, rows, i }) => {
   if (index === 0) {
     return 0 + i
@@ -49,13 +49,12 @@ export const deriveUseFromSvg = ({
   index,
   width,
   height,
-  // padding,
-  // gap,
+  padding,
 }) => {
   return row.map((o, i) => {
-    const length = _getItemIndex({ index, rows, i })
-    return `<use href="#item_${name}_${length}" x=${i * width} y=${
-      index * height
-    } />`
+    const _index = _getItemIndex({ index, rows, i })
+    const x = i * width + padding
+    const y = index * height + padding
+    return `<use href="#item_${name}_${_index}" x=${x} y=${y} />`
   })
 }

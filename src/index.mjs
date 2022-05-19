@@ -1,10 +1,13 @@
 import {
+  getRandomNum,
   convertSvgToSymbol,
   getUseFromSvg,
   deriveUseFromSvg,
 } from './utils.mjs'
 
-const multiSVGSCoords = ({ name, backgroundColor, height, width, svgs }) => {
+const multiSVGSCoords = ({ backgroundColor, height, width, svgs }) => {
+  const name = getRandomNum()
+
   const symbols = svgs.map((svg, index) => {
     return convertSvgToSymbol({ name, index, html: svg.str })
   })
@@ -22,17 +25,17 @@ const multiSVGSCoords = ({ name, backgroundColor, height, width, svgs }) => {
 
 // todo: align: left/center/right
 const multiSVGSLayout = ({
-  name,
   backgroundColor,
   rows,
   svgWidth,
   svgHeight,
-  // padding,
-  // gap,
+  padding = 0,
 }) => {
   if (rows.length > 3) {
     return 'error: 3 rows max'
   }
+
+  const name = getRandomNum()
 
   const allSvgs = rows.flat()
   const symbols = allSvgs.map((svg, index) => {
@@ -49,8 +52,7 @@ const multiSVGSLayout = ({
         index,
         width: svgWidth,
         height: svgHeight,
-        // padding,
-        // gap,
+        padding,
       })
     })
 
@@ -61,8 +63,8 @@ const multiSVGSLayout = ({
     0
   )
 
-  const width = rows[longestIndex].length * svgWidth
-  const height = rows.length * svgHeight
+  const width = rows[longestIndex].length * svgWidth + padding * 2
+  const height = rows.length * svgHeight + padding * 2
 
   return `<svg width=${width} height=${height} xmlns="http://www.w3.org/2000/svg">
             <rect fill=${backgroundColor} width=${width} height=${height} y="0" x="0"></rect>
@@ -72,9 +74,7 @@ const multiSVGSLayout = ({
 }
 
 const multiSVGS = ({
-  name,
   padding,
-  gap,
   rows,
   type,
   height,
@@ -86,13 +86,11 @@ const multiSVGS = ({
   svgHeight,
 }) => {
   return type === 'coords'
-    ? multiSVGSCoords({ name, backgroundColor, height, width, svgs })
+    ? multiSVGSCoords({ backgroundColor, height, width, svgs })
     : type === 'layout'
     ? multiSVGSLayout({
-        name,
         backgroundColor,
         padding,
-        gap,
         rows,
         align,
         svgWidth,

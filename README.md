@@ -16,7 +16,6 @@ $ npm install multi-svgs
 // input - coords
 
 multiSVGS({
-  name: 'foo',
   type: 'coords',
   backgroundColor: 'pink',
   width: 220,
@@ -49,7 +48,7 @@ multiSVGS({
 ```
 
 ```html
-<!-- Output -->
+<!-- output - coords -->
 
 <svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
   <rect fill="pink" width="600" height="800" y="0" x="0"></rect>
@@ -63,9 +62,9 @@ multiSVGS({
   <symbol width="200" height="200" id="item_2">
     <rect width="200" height="200" style="fill: green;"></rect>
   </symbol>
-  <use href="#item_foo_0" x="0" y="0"></use>
-  <use href="#item_foo_1" x="0" y="300"></use>
-  <use href="#item_foo_2" x="0" y="550"></use>
+  <use href="#item_3755_0" x="0" y="0"></use>
+  <use href="#item_3755_1" x="0" y="300"></use>
+  <use href="#item_3755_2" x="0" y="550"></use>
 </svg>
 ```
 
@@ -73,7 +72,6 @@ multiSVGS({
 // input - layout
 
 multiSVGS({
-  name: 'bar',
   type: 'layout',
   backgroundColor: 'pink',
   svgWidth: 200,
@@ -130,47 +128,46 @@ multiSVGS({
 ```
 
 ```html
-<!-- Output -->
+<!-- output - layout -->
 
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="pink" width="800" height="300" y="0" x="0"></rect>
-  <symbol width="200" height="100" id="item_one_0">
+<svg width="840" height="340" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="pink" width="840" height="340" y="0" x="0"></rect>
+  <symbol width="200" height="100" id="item_33583_0">
     <rect x="0" y="0" width="200" height="100" style="fill: red;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_1">
+  <symbol width="200" height="100" id="item_33583_1">
     <rect x="0" y="0" width="200" height="100" style="fill: black;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_2">
+  <symbol width="200" height="100" id="item_33583_2">
     <rect x="0" y="0" width="200" height="100" style="fill: grey;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_3">
+  <symbol width="200" height="100" id="item_33583_3">
     <rect x="0" y="0" width="200" height="100" style="fill: green;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_4">
+  <symbol width="200" height="100" id="item_33583_4">
     <rect x="0" y="0" width="200" height="100" style="fill: blue;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_5">
+  <symbol width="200" height="100" id="item_33583_5">
     <rect x="0" y="0" width="200" height="100" style="fill: purple;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_6">
+  <symbol width="200" height="100" id="item_33583_6">
     <rect x="0" y="0" width="200" height="100" style="fill: orange;"></rect>
   </symbol>
-  <symbol width="200" height="100" id="item_one_7">
+  <symbol width="200" height="100" id="item_33583_7">
     <rect x="0" y="0" width="200" height="100" style="fill: yellow;"></rect>
   </symbol>
-  <use href="#item_bar_0" x="0" y="0"></use>
-  <use href="#item_bar_1" x="0" y="100"></use>
-  <use href="#item_bar_2" x="200" y="100"></use>
-  <use href="#item_bar_3" x="400" y="100"></use>
-  <use href="#item_bar_4" x="0" y="200"></use>
-  <use href="#item_bar_5" x="200" y="200"></use>
-  <use href="#item_bar_6" x="400" y="200"></use>
-  <use href="#item_bar_7" x="600" y="200"></use>
+  <use href="#item_33583_0" x="20" y="20"></use>
+  <use href="#item_33583_1" x="20" y="120"></use>
+  <use href="#item_33583_2" x="220" y="120"></use>
+  <use href="#item_33583_3" x="420" y="120"></use>
+  <use href="#item_33583_4" x="20" y="220"></use>
+  <use href="#item_33583_5" x="220" y="220"></use>
+  <use href="#item_33583_6" x="420" y="220"></use>
+  <use href="#item_33583_7" x="620" y="220"></use>
 </svg>
 ```
 
 ## Notes
 
-- _feature_: add gap / padding to type layout
 - _bug_: errant (invisible) commas rendered out inside SVG elements
-- _techdebt_: passing in name shouldn't be needed
+- _techdebt_: convert to TS

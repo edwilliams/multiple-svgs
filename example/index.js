@@ -1,7 +1,6 @@
 import multiSVGS from '../src/index.mjs'
 
 const HTML_coords = multiSVGS({
-  name: 'foo',
   type: 'coords',
   backgroundColor: 'pink',
   width: 220,
@@ -34,11 +33,10 @@ const HTML_coords = multiSVGS({
 
 // NB all SVG must be same width / height
 const HTML_layout = multiSVGS({
-  name: 'bar',
+  padding: 10,
   type: 'layout',
   backgroundColor: 'pink',
-  padding: 10,
-  gap: 10,
+  padding: 20,
   svgWidth: 200,
   svgHeight: 100,
   rows: [
