@@ -27,34 +27,5 @@ export const convertSvgToSymbol = ({ name, index, html }) => {
 }
 
 export const getUseFromSvg = ({ name, index, x, y }) => {
-  return `<use href="#item_${name}_${index}" x=${x} y=${y} />`
-}
-
-const _getItemIndex = ({ index, rows, i }) => {
-  if (index === 0) {
-    return 0 + i
-  } else if (index === 1) {
-    return rows[index - 1].length + i
-  } else if (index === 2) {
-    return rows[index - 1].length + rows[index - 2].length + i
-  } else {
-    return undefined
-  }
-}
-
-export const deriveUseFromSvg = ({
-  name,
-  row,
-  rows,
-  index,
-  width,
-  height,
-  padding,
-}) => {
-  return row.map((o, i) => {
-    const _index = _getItemIndex({ index, rows, i })
-    const x = i * width + padding
-    const y = index * height + padding
-    return `<use href="#item_${name}_${_index}" x=${x} y=${y} />`
-  })
+  return `<use href="#item_${name}_${index}" x="${x}" y="${y}" />`
 }
