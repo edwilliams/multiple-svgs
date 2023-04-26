@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/multiple-svgs.svg)](https://www.npmjs.com/package/multiple-svgs)
 
-Convert multiple SVG's (as strings with co-ordinates) into one SVG. Making use of `<symbol>` and `<use>`
+This library would be better called combine SVGs!
 
 ## Install
 
@@ -10,16 +10,62 @@ Convert multiple SVG's (as strings with co-ordinates) into one SVG. Making use o
 $ npm install multiple-svgs
 ```
 
-## Usage
+## Getting Started
+
+Pass in an array of objects to receive a combined SVG. For example
+
+```json
+[
+  {
+    "x": 0,
+    "y": 0,
+    "str": `<svg>...</svg>`
+  },
+  {
+    "x": 100,
+    "y": 0,
+    "str": `<svg>...</svg>`
+  }
+]
+```
+
+## Full Usage
 
 **input**
 
 ```javascript
-multipleSvgs({
-  backgroundColor: 'pink',
-  width: 220,
+const nested = multipleSvgs({
+  width: 50,
+  height: 50,
+  svgs: [
+    {
+      x: 0,
+      y: 0,
+      str: `<svg width="25" height="50" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="25" height="50" style="fill: blue;" />
+            </svg>`,
+    },
+    {
+      x: 25,
+      y: 0,
+      str: `<svg width="25" height="50" xmlns="http://www.w3.org/2000/svg">
+              <rect width="25" height="50" style="fill: yellow;" />
+            </svg>`,
+    },
+  ],
+})
+
+const demo = multipleSvgs({
+  id: 'demo',
+  defs: `<style type="text/css">svg { background: pink; }</style>`,
+  width: 320,
   height: 640,
   svgs: [
+    {
+      x: 250,
+      y: 10,
+      str: nested, // multipleSvgs can be used recursively
+    },
     {
       x: 10,
       y: 10,
@@ -49,20 +95,35 @@ multipleSvgs({
 **output**
 
 ```html
-<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="pink" width="600" height="800" y="0" x="0"></rect>
-  <symbol width="200" height="200" id="item_0">
+<svg id="demo" width="320" height="640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">
+      svg {
+        background: pink;
+      }
+    </style>
+  </defs>
+  <g width="50" height="50" transform="translate(250, 10)">
+    <g width="25" height="50" transform="translate(0, 0)">
+      <rect x="0" y="0" width="25" height="50" style="fill: blue;"></rect>
+    </g>
+    <g width="25" height="50" transform="translate(25, 0)">
+      <rect width="25" height="50" style="fill: yellow;"></rect>
+    </g>
+  </g>
+  <g width="200" height="200" transform="translate(10, 10)">
     <rect x="0" y="0" width="200" height="100" style="fill: red;"></rect>
     <rect x="0" y="100" width="200" height="100" style="fill: orange;"></rect>
-  </symbol>
-  <symbol width="100" height="100" id="item_1">
-    <circle cx="50" cy="50" r="40" fill="red"></circle>
-  </symbol>
-  <symbol width="200" height="200" id="item_2">
+  </g>
+  <g width="200" height="200" transform="translate(10, 220)">
+    <rect width="200" height="200" style="fill: yellow;"></rect>
+  </g>
+  <g width="200" height="200" transform="translate(10, 430)">
     <rect width="200" height="200" style="fill: green;"></rect>
-  </symbol>
-  <use href="#item_3755_0" x="0" y="0"></use>
-  <use href="#item_3755_1" x="0" y="300"></use>
-  <use href="#item_3755_2" x="0" y="550"></use>
+  </g>
 </svg>
 ```
+
+## Notes
+
+The `html2json` repo has issues bundling, hence an edited version has been included in the src of this repo

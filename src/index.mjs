@@ -1,21 +1,28 @@
-import { getRandomNum, convertSvgToSymbol, getUseFromSvg } from './utils.mjs'
+import { convertSvgToG } from './utils.mjs'
 
-const multipleSvgs = ({ backgroundColor, height, width, svgs }) => {
-  const name = getRandomNum()
+const multipleSvgs = ({ id, height, width, svgs, defs }) => {
+  const _defs = defs ? `<defs>${defs}</defs>` : ''
 
-  const symbols = svgs.map((svg, index) =>
-    convertSvgToSymbol({ name, index, html: svg.str })
+  const gs = svgs.map((svg) =>
+    convertSvgToG({
+      html: svg.str,
+      x: svg.x,
+      y: svg.y,
+    })
   )
 
-  const uses = svgs.map((svg, index) =>
-    getUseFromSvg({ name, index, x: svg.x, y: svg.y })
-  )
+  const widthHeight =
+    width && height ? `width="${width}" height="${height}"` : ''
 
-  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-            <rect fill="${backgroundColor}" width="${width}" height="${height}" y="0" x="0"></rect>
-            ${symbols}
-            ${uses}
-          </svg>`
+  const _id = id ? `id="${id}"` : ''
+
+  const str = `<svg ${_id} ${widthHeight} xmlns="http://www.w3.org/2000/svg">
+      ${_defs}
+      ${gs}
+    </svg>`
+
+  // techdebt: somehow, commas are being added along with an empty svg tag
+  return str.replaceAll('</g>,', '</g>').replaceAll('<svg></svg>', '')
 }
 
 export default multipleSvgs
